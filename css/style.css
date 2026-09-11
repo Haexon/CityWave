@@ -1,0 +1,119 @@
+/* =========================================================
+   Solstice Labs — Global Styles
+   Replace "Solstice Labs" throughout with your real company name.
+   ========================================================= */
+
+:root {
+  /* Color tokens */
+  --ink: #12182B;        /* primary dark — bg for hero/footer, text elsewhere */
+  --ink-soft: #2A3350;   /* lighter panel on dark sections */
+  --paper: #EEF1F5;      /* page background */
+  --paper-raised: #FFFFFF;
+  --slate: #4A5568;      /* secondary text */
+  --slate-light: #7C879C;
+  --accent: #C98A2C;     /* amber — links, highlights, CTA */
+  --accent-deep: #8C5D1D;
+  --line: #D7DCE3;       /* hairline borders */
+
+  /* Type */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Layout */
+  --max-width: 1120px;
+  --gutter: 1.5rem;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+}
+
+h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 500; }
+h2 { font-size: clamp(1.7rem, 3.2vw, 2.4rem); }
+h3 { font-size: 1.25rem; }
+
+p { margin: 0 0 1em; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+section {
+  padding: 5rem 0;
+}
+
+.eyebrow {
+  color: var(--accent-deep);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+}
+
+.lede {
+  font-size: 1.15rem;
+  color: var(--slate);
+  max-width: 42ch;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--ink);
+}
+.btn-primary:hover { background: #b87c26; }
+
+.btn-ghost {
+  border-color: rgba(255,255,255,0.35);
+  color: inherit;
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+@media (max-width: 720px) {
+  section { padding: 3.5rem 0; }
+}

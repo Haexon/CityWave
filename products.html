@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products — CityWave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="container">
+    <a href="index.html" class="brand">CityWave</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="products.html" aria-current="page">Products</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" style="padding-bottom:2rem;">
+  <div class="container" style="grid-template-columns:1fr;">
+    <div>
+      <span class="eyebrow">Products</span>
+      <h1>Three products, one goal: make sensing data trustworthy and cheap to deploy.</h1>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="card" style="margin-bottom:1.75rem;">
+      <span class="tag">Active Product I</span>
+      <h3>Powerful Signal Booster</h3>
+      <p class="lede" style="max-width:70ch;">Our active RIS panel combines power amplification with intelligent beam control, giving high-gain, interference-free coverage for dense urban districts, industrial areas, and transport hubs. Deployed alongside existing base stations, with a cloud-hosted control platform for batch configuration.</p>
+      <p style="color:var(--slate);">Specs: <br>- Power amplification, reconfigurable beams
+        <br>- Multi-beam / multi-band support
+        <br>- Anti-interference
+        <br>- ~20W power draw
+        <br>- Cost: ~S$4,000/m² · Price: S$10,000/m² </p>
+    </div>
+
+    <div class="card">
+      <span class="tag">Passive Product II</span>
+      <h3>Cost-Efficient Panel</h3>
+      <p class="lede" style="max-width:70ch;">A near-zero-power, ultrathin panel that redirects signal into coverage gaps — no cabling, no power supply required. Ideal for IoT deployments, rural areas, and energy-constrained environments. Mounts like a mural; configured via a shared cloud platform.</p>
+      <p style="color:var(--slate);">Specs: <br>- Power amplification, reconfigurable beams
+        <br>- Zero power required
+        <br>- Customizable multi-beam/band (optional)
+        <br>- Ultrathin, mural-like install
+        <br>- Cost: ~S$50/m² · Price: S$150/m² </p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <p style="margin:0; color:#fff; font-family:var(--font-display); font-size:1.1rem;">CityWave</p>
+      <p style="margin:0.3rem 0 0;">Singapore · NTU Collaboration</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
