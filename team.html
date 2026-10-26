@@ -4,7 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Team — CityWave</title>
+<meta name="description" content="Meet the CityWave team: RIS researchers and engineers from NTU's School of Electrical and Electronic Engineering.">
+<meta name="theme-color" content="#EEF1F5">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CityWave">
+<meta property="og:title" content="Team — CityWave">
+<meta property="og:description" content="A small team spanning RIS research and engineering, from NTU.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/components.css">
@@ -14,8 +22,8 @@
 <nav class="site-nav">
   <div class="container">
     <a href="index.html" class="brand">CityWave</a>
-    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-    <ul class="nav-links">
+    <button class="nav-toggle" aria-label="Menu" aria-controls="site-menu" aria-expanded="false"><span class="nav-toggle-bars" aria-hidden="true"></span></button>
+    <ul class="nav-links" id="site-menu">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="products.html">Products</a></li>
@@ -25,8 +33,8 @@
   </div>
 </nav>
 
-<header class="hero" style="padding-bottom:2rem;">
-  <div class="container" style="grid-template-columns:1fr;">
+<header class="hero hero--page">
+  <div class="container">
     <div>
       <span class="eyebrow">Team</span>
       <h1>A small team spanning research and engineering.</h1>
@@ -37,34 +45,40 @@
 <section>
   <div class="container team-grid">
     <div class="team-member">
-      <div class="avatar">CY</div>
+      <div class="avatar"><img src="images/ChauYuen.jpg" alt="Chau Yuen" class="avatar--hd"></div>
       <span class="role">Founder</span>
       <h3>Chau Yuen</h3>
-      <p style="color:var(--slate);">Associate Professor in EEE, IEEE Fellow. Global research leader in RIS: 100+ publications, 60,000+ citations, Lee Kuan Yew Gold Medal recipient.</p>
+      <p>Associate Professor in EEE, Provost's Chair in Wireless, IEEE Fellow and Highly Cited Researcher. Global research leader in RIS: 100+ publications, 60,000+ citations, four international Best Paper Awards in RIS, and multiple patents filed by NTU.</p>
     </div>
     <div class="team-member">
-      <div class="avatar">YL</div>
+      <div class="avatar"><img src="images/YongLianGuan.png" alt="Yong Liang Guan"></div>
       <span class="role">Senior Advisor</span>
       <h3>Yong Liang Guan</h3>
-      <p style="color:var(--slate);">Full Professor in EEE, Associate Vice President at NTU.</p>
+      <p>Full Professor in EEE, Associate Vice President at NTU.</p>
     </div>
     <div class="team-member">
-      <div class="avatar">ZY</div>
+      <div class="avatar"><img src="images/YuFeiZhao.png" alt="Yufei Zhao"></div>
       <span class="role">CEO</span>
-      <h3>Zhao Yufei</h3>
-      <p style="color:var(--slate);">Research Fellow in EEE. Former Huawei engineer with ten years of experience in Reconfigurable Intelligent Surface research.</p>
+      <h3>Yufei Zhao</h3>
+      <p>Research Fellow in EEE, NTU. Former Huawei engineer with several years of experience in Reconfigurable Intelligent Surfaces and extensive knowledge of the RIS market and industry landscape.</p>
     </div>
     <div class="team-member">
-      <div class="avatar">QL</div>
+      <div class="avatar"><img src="images/QihaoLyu.png" alt="Qihao Lyu"></div>
       <span class="role">COO & CTO</span>
       <h3>Qihao Lyu</h3>
-      <p style="color:var(--slate);">Research Fellow in EEE. Ten years of experience in RIS, 100+ publications</p>
+      <p>Research Fellow in EEE, NTU. Hardware engineer with expertise in RF and electronic design, system prototyping, hardware integration and performance optimisation for advanced wireless systems.</p>
     </div>
     <div class="team-member">
-      <div class="avatar">GJ</div>
-      <span class="role">Business Manager</span>
-      <h3>Qihao Lyu</h3>
-      <p style="color:var(--slate);">Research Associate in EEE. </p>
+      <div class="avatar"><img src="images/HaoshiBian.jpg" alt="Haoshi Bian" class="avatar--unstretch"></div>
+      <span class="role">Hardware Design & Simulation</span>
+      <h3>Haoshi Bian</h3>
+      <p>Research Engineer in EEE, NTU. Former engineer at Xi'an Shangpin Information Technology Co., Ltd, with five years of experience in wireless communication.</p>
+    </div>
+    <div class="team-member">
+      <div class="avatar"><img src="images/ZhongzhongWang.jpg" alt="Zhongzhong Wang"></div>
+      <span class="role">Marketing</span>
+      <h3>Zhongzhong Wang</h3>
+      <p>MSc student in EEE, NTU. Junior marketing specialist supporting marketing activities, user research and outreach, with a strong interest in technology commercialisation.</p>
     </div>
   </div>
 </section>
@@ -72,12 +86,14 @@
 <footer class="site-footer">
   <div class="container">
     <div>
-      <p style="margin:0; color:#fff; font-family:var(--font-display); font-size:1.1rem;">CityWave</p>
-      <p style="margin:0.3rem 0 0;">Singapore · NTU Collaboration</p>
+      <p class="footer-brand">CityWave</p>
+      <p class="footer-meta">Singapore · NTU Collaboration</p>
+      <p class="footer-meta">© 2026 CityWave. All rights reserved.</p>
     </div>
     <ul class="footer-links">
       <li><a href="about.html">About</a></li>
       <li><a href="products.html">Products</a></li>
+      <li><a href="team.html">Team</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </div>

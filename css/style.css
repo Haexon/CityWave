@@ -1,6 +1,5 @@
 /* =========================================================
-   Solstice Labs — Global Styles
-   Replace "Solstice Labs" throughout with your real company name.
+   CityWave — Global Styles
    ========================================================= */
 
 :root {
@@ -22,12 +21,14 @@
   /* Layout */
   --max-width: 1120px;
   --gutter: 1.5rem;
+  --nav-height: 4.25rem;
 }
 
 * { box-sizing: border-box; }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-height); /* keep anchor targets clear of the sticky nav */
 }
 
 body {
@@ -53,8 +54,8 @@ h1, h2, h3, h4 {
   margin: 0 0 0.5em;
 }
 
-h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 500; }
-h2 { font-size: clamp(1.7rem, 3.2vw, 2.4rem); }
+h1 { font-size: clamp(2rem, 4.5vw + 0.5rem, 3.6rem); font-weight: 500; }
+h2 { font-size: clamp(1.5rem, 3vw + 0.4rem, 2.4rem); }
 h3 { font-size: 1.25rem; }
 
 p { margin: 0 0 1em; }
@@ -68,6 +69,14 @@ p { margin: 0 0 1em; }
 section {
   padding: 5rem 0;
 }
+
+.section-alt {
+  background: var(--paper-raised);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.section-title { margin-bottom: 2.5rem; }
 
 .eyebrow {
   color: var(--accent-deep);
@@ -83,19 +92,26 @@ section {
   color: var(--slate);
   max-width: 42ch;
 }
+.lede--wide { max-width: 65ch; }
+
+.muted { color: var(--slate); }
 
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
+  min-height: 44px;
   padding: 0.75rem 1.4rem;
   border-radius: 4px;
   font-weight: 600;
   font-size: 0.95rem;
+  font-family: var(--font-body);
   cursor: pointer;
   border: 1px solid transparent;
   transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
+.btn:disabled { opacity: 0.6; cursor: wait; }
 
 .btn-primary {
   background: var(--accent);
@@ -109,9 +125,20 @@ section {
 }
 .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
+/* Scroll reveal — main.js adds .reveal to section content, then .is-visible once it scrolls into view */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
 }
 
 @media (max-width: 720px) {

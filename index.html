@@ -5,7 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CityWave - Smart Signal Booster for Stronger 5G Coverage</title>
 <meta name="description" content="CityWave builds RIS-based smart signal boosters that extend 5G coverage into blind spots, developed with Nanyang Technological University.">
+<meta name="theme-color" content="#EEF1F5">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CityWave">
+<meta property="og:title" content="CityWave - Smart Signal Booster for Stronger 5G Coverage">
+<meta property="og:description" content="RIS-based smart signal boosters that extend 5G coverage into blind spots, developed with NTU.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/components.css">
@@ -15,8 +22,8 @@
 <nav class="site-nav">
   <div class="container">
     <a href="index.html" class="brand">CityWave</a>
-    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-    <ul class="nav-links">
+    <button class="nav-toggle" aria-label="Menu" aria-controls="site-menu" aria-expanded="false"><span class="nav-toggle-bars" aria-hidden="true"></span></button>
+    <ul class="nav-links" id="site-menu">
       <li><a href="index.html" aria-current="page">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="products.html">Products</a></li>
@@ -37,7 +44,7 @@
         <a href="about.html" class="btn btn-ghost">Our story</a>
       </div>
     </div>
-    <svg class="hero-diagram" viewBox="0 0 420 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of connected research nodes">
+    <svg class="hero-diagram" viewBox="0 0 420 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of signal paths radiating from a CityWave panel">
       <g stroke="#C98A2C" stroke-width="1.4" opacity="0.7">
         <line x1="80" y1="80" x2="210" y2="150"/>
         <line x1="210" y1="150" x2="340" y2="90"/>
@@ -45,16 +52,44 @@
         <line x1="210" y1="150" x2="300" y2="260"/>
         <line x1="150" y1="270" x2="300" y2="260"/>
       </g>
+      <!-- Animated signal: base station -> panel, then panel -> devices (see .hero-diagram in components.css) -->
+      <g class="signal" stroke="#F2C27A" stroke-width="3" stroke-linecap="round">
+        <line class="signal-in" x1="80" y1="80" x2="210" y2="150" pathLength="1"/>
+        <line class="signal-out" x1="210" y1="150" x2="340" y2="90" pathLength="1"/>
+        <line class="signal-out" x1="210" y1="150" x2="150" y2="270" pathLength="1"/>
+        <line class="signal-out" x1="210" y1="150" x2="300" y2="260" pathLength="1"/>
+      </g>
+      <circle class="ripple" cx="210" cy="150" r="13" fill="none" stroke="#C98A2C" stroke-width="2"/>
       <g fill="#EEF1F5">
-        <circle cx="80" cy="80" r="7"/>
-        <circle cx="340" cy="90" r="7"/>
-        <circle cx="150" cy="270" r="9"/>
-        <circle cx="300" cy="260" r="7"/>
+        <circle class="node node-source" cx="80" cy="80" r="7"/>
+        <circle class="node node-device" cx="340" cy="90" r="7"/>
+        <circle class="node node-device" cx="150" cy="270" r="9"/>
+        <circle class="node node-device" cx="300" cy="260" r="7"/>
       </g>
       <circle cx="210" cy="150" r="13" fill="#C98A2C"/>
     </svg>
   </div>
 </header>
+
+<!-- Figures from CityWave_National GRIP Final (fifth version).pdf, pp. 3–4 -->
+<div class="stats">
+  <div class="container">
+    <ul class="stat-list">
+      <li class="stat">
+        <span class="stat-value">1–2<span class="stat-unit"> days</span></span>
+        <span class="stat-label">to deploy, vs 1–2 years for a new base station</span>
+      </li>
+      <li class="stat">
+        <span class="stat-value"><span data-count="99">99</span>%</span>
+        <span class="stat-label">of environments reachable, vs 90% for base stations</span>
+      </li>
+      <li class="stat">
+        <span class="stat-value"><span data-count="100">100</span>%</span>
+        <span class="stat-label">uplink speed increase in our underground carpark trial</span>
+      </li>
+    </ul>
+  </div>
+</div>
 
 <div class="collab-strip">
   <div class="container">
@@ -66,8 +101,8 @@
 <section id="products-preview">
   <div class="container">
     <span class="eyebrow">What we build</span>
-    <h2>A small, focused product line</h2>
-    <div class="card-grid" style="margin-top:2.5rem;">
+    <h2 class="section-title">A small, focused product line</h2>
+    <div class="card-grid">
       <div class="card">
         <span class="tag">Active</span>
         <h3>Active Product I</h3>
@@ -84,14 +119,14 @@
   </div>
 </section>
 
-<section style="background:var(--paper-raised); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+<section class="section-alt">
   <div class="container split">
     <div>
       <span class="eyebrow">Why it matters</span>
       <h2>Base stations don't fit everywhere.</h2>
     </div>
     <div>
-      <p class="lede" style="max-width:60ch;">Adding a new base station typically takes 1–2 years and costs US$100k–200k, and can't be deployed in roughly 10% of Singapore's environments — heritage buildings, underground carparks, dense residential blocks. CityWave's RIS panels deploy in 1–2 days at a fraction of the cost, extending usable coverage to 99% of these environments.</p>
+      <p class="lede lede--wide">Adding a new base station typically takes 1–2 years and costs US$100k–200k, and can't be deployed in roughly 10% of Singapore's environments — heritage buildings, underground carparks, dense residential blocks. CityWave's RIS panels deploy in 1–2 days at a fraction of the cost, extending usable coverage to 99% of these environments.</p>
     </div>
   </div>
 </section>
@@ -99,12 +134,14 @@
 <footer class="site-footer">
   <div class="container">
     <div>
-      <p style="margin:0; color:#fff; font-family:var(--font-display); font-size:1.1rem;">CityWave</p>
-      <p style="margin:0.3rem 0 0;">Singapore · NTU Collaboration</p>
+      <p class="footer-brand">CityWave</p>
+      <p class="footer-meta">Singapore · NTU Collaboration</p>
+      <p class="footer-meta">© 2026 CityWave. All rights reserved.</p>
     </div>
     <ul class="footer-links">
       <li><a href="about.html">About</a></li>
       <li><a href="products.html">Products</a></li>
+      <li><a href="team.html">Team</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </div>

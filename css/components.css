@@ -15,7 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 4.25rem;
+  height: var(--nav-height);
 }
 
 .brand {
@@ -43,22 +43,52 @@
   color: var(--ink);
 }
 
+/* Hamburger button: 44px tap target, three CSS bars that morph into an X */
 .nav-toggle {
   display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-right: -10px; /* optically align the bars with the gutter */
+  padding: 0;
   background: none;
   border: none;
-  font-size: 1.5rem;
+  color: var(--ink);
   cursor: pointer;
 }
+.nav-toggle-bars,
+.nav-toggle-bars::before,
+.nav-toggle-bars::after {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.nav-toggle-bars { position: relative; }
+.nav-toggle-bars::before,
+.nav-toggle-bars::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+.nav-toggle-bars::before { top: -7px; }
+.nav-toggle-bars::after { top: 7px; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bars { background-color: transparent; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bars::before { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bars::after { transform: translateY(-7px) rotate(-45deg); }
 
 @media (max-width: 720px) {
   .nav-links {
     position: absolute;
-    top: 4.25rem;
+    top: var(--nav-height);
     left: 0;
     right: 0;
     background: var(--paper);
     border-bottom: 1px solid var(--line);
+    box-shadow: 0 12px 24px rgba(18, 24, 43, 0.08);
     flex-direction: column;
     gap: 0;
     display: none;
@@ -66,7 +96,7 @@
   .nav-links.open { display: flex; }
   .nav-links li { border-top: 1px solid var(--line); }
   .nav-links a { display: block; padding: 1rem var(--gutter); }
-  .nav-toggle { display: block; }
+  .nav-toggle { display: inline-flex; }
 }
 
 /* --- Hero --- */
@@ -84,20 +114,110 @@
   padding-bottom: 4.5rem;
 }
 
+/* Inner-page hero: single column, tighter bottom */
+.hero--page { padding-bottom: 2rem; }
+.hero--page .container { grid-template-columns: 1fr; }
+
 .hero h1 { color: #fff; }
 .hero .lede { color: #C3CAD9; }
 
 .hero-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-top: 2rem;
 }
 
 .hero-diagram { width: 100%; height: auto; }
 
+/* Hero signal animation — one 3.6s loop:
+   0–0.9s pulse travels base station -> panel, panel ripples,
+   0.9–1.8s pulses travel panel -> devices, devices light up on arrival.
+   Lines use pathLength="1", so dash lengths are fractions of each line. */
+.hero-diagram .signal line {
+  stroke-dasharray: 0.18 2;
+  stroke-dashoffset: 0.2; /* dash parked just before the line start = hidden */
+  animation: signal-travel 3.6s linear infinite;
+}
+.hero-diagram .signal-out { animation-delay: 0.9s; }
+
+.hero-diagram .ripple,
+.hero-diagram .node {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.hero-diagram .ripple {
+  opacity: 0;
+  animation: ripple 3.6s ease-out 0.9s infinite;
+}
+.hero-diagram .node-source { animation: node-ping 3.6s ease-out infinite; }
+.hero-diagram .node-device { animation: node-ping 3.6s ease-out 1.8s infinite; }
+
+@keyframes signal-travel {
+  0%        { stroke-dashoffset: 0.2; }
+  25%, 100% { stroke-dashoffset: -1.02; }
+}
+@keyframes ripple {
+  0%        { opacity: 0.9; transform: scale(1); }
+  35%, 100% { opacity: 0;   transform: scale(4); }
+}
+@keyframes node-ping {
+  0%        { fill: #F2C27A; transform: scale(1.5); }
+  20%, 100% { fill: #EEF1F5; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-diagram * { animation: none !important; }
+}
+
 @media (max-width: 860px) {
   .hero .container { grid-template-columns: 1fr; }
   .hero-diagram { max-width: 340px; margin: 0 auto; }
+}
+
+@media (max-width: 600px) {
+  .hero .container { padding-top: 3rem; padding-bottom: 3rem; }
+  .hero--page .container { padding-bottom: 1.5rem; }
+  .hero-diagram { display: none; } /* decorative; keep the headline + CTAs above the fold */
+}
+
+@media (max-width: 480px) {
+  .hero-actions .btn { flex: 1 1 100%; }
+}
+
+/* --- Stats band (light, directly under the homepage hero) --- */
+.stats {
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.stat-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.stat-value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 2.5vw + 1.2rem, 3.2rem);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--accent-deep); /* bright --accent is too low-contrast on the light background */
+  font-variant-numeric: tabular-nums; /* digits keep the same width while counting up */
+}
+.stat-unit { font-size: 0.55em; }
+.stat-label {
+  display: block;
+  margin-top: 0.5rem;
+  max-width: 24ch;
+  color: var(--slate);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+  .stat-list { grid-template-columns: 1fr; gap: 1.5rem; }
 }
 
 /* --- Collaboration strip --- */
@@ -126,14 +246,11 @@
 }
 
 /* --- Cards --- */
+/* auto-fit: as many columns as fit, so 2 cards fill the row and phones get 1 column */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 1.75rem;
-}
-
-@media (max-width: 860px) {
-  .card-grid { grid-template-columns: 1fr; }
 }
 
 .card {
@@ -159,6 +276,31 @@
   border-bottom: 1px solid var(--accent);
 }
 
+/* --- Products --- */
+.product-list {
+  display: grid;
+  gap: 1.75rem;
+}
+.card .lede { font-size: 1.05rem; }
+
+.spec-heading {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 1.25rem 0 0.5rem;
+}
+.spec-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--slate);
+}
+.spec-list li { margin-bottom: 0.35rem; }
+
+@media (max-width: 480px) {
+  .card { padding: 1.25rem; }
+}
+
 /* --- Section split (two-column editorial) --- */
 .split {
   display: grid;
@@ -167,7 +309,7 @@
   align-items: start;
 }
 @media (max-width: 860px) {
-  .split { grid-template-columns: 1fr; }
+  .split { grid-template-columns: 1fr; gap: 1.5rem; }
 }
 
 /* --- Timeline (founding story — genuinely sequential) --- */
@@ -199,14 +341,24 @@
   margin-bottom: 0.25rem;
 }
 
+.patent-list {
+  color: var(--slate);
+  max-width: 65ch;
+  padding-left: 1.2rem;
+  margin: 0;
+}
+.patent-list li { margin-bottom: 0.6rem; }
+.patent-list .patent-id {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--slate-light);
+}
+
 /* --- Team --- */
 .team-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-}
-@media (max-width: 720px) {
-  .team-grid { grid-template-columns: repeat(2, 1fr); }
 }
 .avatar {
   width: 72px;
@@ -220,7 +372,19 @@
   font-family: var(--font-display);
   font-size: 1.3rem;
   margin-bottom: 1rem;
+  overflow: hidden;
 }
+/* Headshots were cropped from slides with a thin ring; scale up to clip it */
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.12);
+}
+/* Source photo is stretched horizontally; restore proportions, nudge down to keep the hair */
+.avatar img.avatar--unstretch { transform: translateY(10%) scale(1.12, 1.34); }
+/* Proper square headshot (no slide ring), so no zoom needed */
+.avatar img.avatar--hd { transform: none; }
 .team-member .role {
   color: var(--accent-deep);
   font-size: 0.9rem;
@@ -228,8 +392,38 @@
   margin-bottom: 0.5rem;
   display: block;
 }
+.team-member p { color: var(--slate); }
 
-/* --- Contact form --- */
+@media (max-width: 720px) {
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+}
+/* Phones: one column, avatar beside the text instead of above it */
+@media (max-width: 520px) {
+  .team-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+  .team-member {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    column-gap: 1rem;
+    align-items: start;
+  }
+  .team-member > * { grid-column: 2; }
+  .team-member .avatar {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    width: 56px;
+    height: 56px;
+    font-size: 1.1rem;
+    margin: 0;
+  }
+  .team-member p { margin-bottom: 0; }
+}
+
+/* --- Contact --- */
+.contact-direct a {
+  color: var(--ink);
+  border-bottom: 1px solid var(--accent);
+}
+
 .contact-form {
   display: grid;
   gap: 1.1rem;
@@ -248,10 +442,20 @@
   border: 1px solid var(--line);
   border-radius: 4px;
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 1rem; /* 16px+ stops iOS Safari zooming into the field */
   background: var(--paper-raised);
 }
 .contact-form textarea { resize: vertical; min-height: 120px; }
+.contact-form .btn { justify-self: start; }
+.form-status {
+  margin: 0;
+  min-height: 1.5em;
+  color: var(--slate);
+}
+
+@media (max-width: 480px) {
+  .contact-form .btn { justify-self: stretch; }
+}
 
 /* --- Footer --- */
 .site-footer {
@@ -267,10 +471,22 @@
   gap: 1.5rem;
 }
 .site-footer a:hover { color: #fff; }
+.footer-brand {
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+.footer-meta { margin: 0.3rem 0 0; }
 .footer-links {
   display: flex;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
   list-style: none;
   padding: 0;
   margin: 0;
+}
+.footer-links a {
+  display: inline-block;
+  padding: 0.6rem 0; /* bigger tap target without changing the look */
 }

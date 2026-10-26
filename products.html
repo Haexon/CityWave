@@ -4,7 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Products — CityWave</title>
+<meta name="description" content="CityWave's active RIS signal booster and passive near-zero-power panel extend 5G coverage into carparks, heritage buildings and other blind spots.">
+<meta name="theme-color" content="#EEF1F5">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CityWave">
+<meta property="og:title" content="Products — CityWave">
+<meta property="og:description" content="An active RIS signal booster and a passive near-zero-power panel for 5G blind spots.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/components.css">
@@ -14,8 +22,8 @@
 <nav class="site-nav">
   <div class="container">
     <a href="index.html" class="brand">CityWave</a>
-    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-    <ul class="nav-links">
+    <button class="nav-toggle" aria-label="Menu" aria-controls="site-menu" aria-expanded="false"><span class="nav-toggle-bars" aria-hidden="true"></span></button>
+    <ul class="nav-links" id="site-menu">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="products.html" aria-current="page">Products</a></li>
@@ -25,35 +33,41 @@
   </div>
 </nav>
 
-<header class="hero" style="padding-bottom:2rem;">
-  <div class="container" style="grid-template-columns:1fr;">
+<header class="hero hero--page">
+  <div class="container">
     <div>
       <span class="eyebrow">Products</span>
-      <h1>Three products, one goal: make sensing data trustworthy and cheap to deploy.</h1>
+      <h1>Two products, one goal: strong 5G signal wherever base stations can't reach.</h1>
     </div>
   </div>
 </header>
 
 <section>
-  <div class="container">
-    <div class="card" style="margin-bottom:1.75rem;">
+  <div class="container product-list">
+    <div class="card">
       <span class="tag">Active Product I</span>
       <h3>Powerful Signal Booster</h3>
-      <p class="lede" style="max-width:70ch;">Our active RIS panel combines power amplification with intelligent beam control, giving high-gain, interference-free coverage for dense urban districts, industrial areas, and transport hubs. Deployed alongside existing base stations, with a cloud-hosted control platform for batch configuration.</p>
-      <p style="color:var(--slate);">Specs: <br>- Power amplification, reconfigurable beams
-        <br>- Multi-beam / multi-band support
-        <br>- Anti-interference
-        <br>- ~20W power draw
+      <p class="lede lede--wide">Our active RIS panel combines power amplification with intelligent beam control, giving high-gain, interference-free coverage for dense urban districts, industrial areas, and transport hubs. Deployed alongside existing base stations, with a cloud-hosted control platform for batch configuration.</p>
+      <h4 class="spec-heading">Specs</h4>
+      <ul class="spec-list">
+        <li>Power amplification, reconfigurable beams</li>
+        <li>Multi-beam / multi-band support</li>
+        <li>Anti-interference</li>
+        <li>~20W power draw</li>
+      </ul>
     </div>
 
     <div class="card">
       <span class="tag">Passive Product II</span>
       <h3>Cost-Efficient Panel</h3>
-      <p class="lede" style="max-width:70ch;">A near-zero-power, ultrathin panel that redirects signal into coverage gaps — no cabling, no power supply required. Ideal for IoT deployments, rural areas, and energy-constrained environments. Mounts like a mural; configured via a shared cloud platform.</p>
-      <p style="color:var(--slate);">Specs: <br>- Power amplification, reconfigurable beams
-        <br>- Zero power required
-        <br>- Customizable multi-beam/band (optional)
-        <br>- Ultrathin, mural-like install
+      <p class="lede lede--wide">A near-zero-power, ultrathin panel that redirects signal into coverage gaps — no cabling, no power supply required. Ideal for IoT deployments, rural areas, and energy-constrained environments. Mounts like a mural; configured via a shared cloud platform.</p>
+      <h4 class="spec-heading">Specs</h4>
+      <ul class="spec-list">
+        <li>Passive signal redirection, reconfigurable beams</li>
+        <li>Near-zero power, no power supply or cabling</li>
+        <li>Customizable multi-beam/band (optional)</li>
+        <li>Ultrathin, mural-like install</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -61,12 +75,14 @@
 <footer class="site-footer">
   <div class="container">
     <div>
-      <p style="margin:0; color:#fff; font-family:var(--font-display); font-size:1.1rem;">CityWave</p>
-      <p style="margin:0.3rem 0 0;">Singapore · NTU Collaboration</p>
+      <p class="footer-brand">CityWave</p>
+      <p class="footer-meta">Singapore · NTU Collaboration</p>
+      <p class="footer-meta">© 2026 CityWave. All rights reserved.</p>
     </div>
     <ul class="footer-links">
       <li><a href="about.html">About</a></li>
       <li><a href="products.html">Products</a></li>
+      <li><a href="team.html">Team</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </div>
