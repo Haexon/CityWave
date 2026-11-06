@@ -10,7 +10,14 @@
 <meta property="og:site_name" content="CityWave">
 <meta property="og:title" content="Products — CityWave">
 <meta property="og:description" content="An active RIS signal booster and a passive near-zero-power panel for 5G blind spots.">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:image" content="https://haexon.github.io/CityWave/images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="CityWave logo">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="images/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -21,7 +28,7 @@
 
 <nav class="site-nav">
   <div class="container">
-    <a href="index.html" class="brand">CityWave</a>
+    <a href="index.html" class="brand"><img class="brand-mark" src="images/logo/citywave-mark-blue.svg" alt="" width="40" height="40">CityWave</a>
     <button class="nav-toggle" aria-label="Menu" aria-controls="site-menu" aria-expanded="false"><span class="nav-toggle-bars" aria-hidden="true"></span></button>
     <ul class="nav-links" id="site-menu">
       <li><a href="index.html">Home</a></li>
@@ -45,9 +52,13 @@
 <section>
   <div class="container product-list">
     <div class="card">
+      <div class="product-photos">
+        <img src="images/products/active-front-800.jpg" srcset="images/products/active-front-800.jpg 800w, images/products/active-front-1600.jpg 1600w" sizes="(max-width: 480px) 100vw, (max-width: 1120px) 50vw, 520px" width="1600" height="1067" alt="Front view of the Active Product I panel: a white CityWave enclosure framing a 20 by 20 array of orange reconfigurable elements">
+        <img src="images/products/active-side-800.jpg" srcset="images/products/active-side-800.jpg 800w, images/products/active-side-1600.jpg 1600w" sizes="(max-width: 480px) 100vw, (max-width: 1120px) 50vw, 520px" width="1600" height="1067" alt="Angled view of the same panel, showing the depth of the enclosure">
+      </div>
       <span class="tag">Active Product I</span>
       <h3>Powerful Signal Booster</h3>
-      <p class="lede lede--wide">Our active RIS panel combines power amplification with intelligent beam control, giving high-gain, interference-free coverage for dense urban districts, industrial areas, and transport hubs. Deployed alongside existing base stations, with a cloud-hosted control platform for batch configuration.</p>
+      <p class="lede lede--wide">Our active RIS panel combines power amplification with intelligent beam control, giving high-gain, interference-free coverage for dense urban districts, industrial areas, and transport hubs. Deployed alongside existing base stations, with a cloud-hosted software control platform.</p>
       <h4 class="spec-heading">Specs</h4>
       <ul class="spec-list">
         <li>Power amplification, reconfigurable beams</li>
@@ -63,7 +74,7 @@
       <p class="lede lede--wide">A near-zero-power, ultrathin panel that redirects signal into coverage gaps — no cabling, no power supply required. Ideal for IoT deployments, rural areas, and energy-constrained environments. Mounts like a mural; configured via a shared cloud platform.</p>
       <h4 class="spec-heading">Specs</h4>
       <ul class="spec-list">
-        <li>Passive signal redirection, reconfigurable beams</li>
+        <li>Passive signal redirection into coverage gaps</li>
         <li>Near-zero power, no power supply or cabling</li>
         <li>Customizable multi-beam/band (optional)</li>
         <li>Ultrathin, mural-like install</li>
@@ -72,10 +83,50 @@
   </div>
 </section>
 
+<section class="section-alt">
+  <div class="container">
+    <span class="eyebrow">Hardware &amp; software</span>
+    <h2 class="section-title">Measured in the chamber, steered from software</h2>
+    <div class="figure-grid">
+      <figure class="product-figure">
+        <img src="images/products/active-chamber-test-800.jpg" srcset="images/products/active-chamber-test-800.jpg 800w, images/products/active-chamber-test-1600.jpg 1600w" sizes="(max-width: 860px) 100vw, 540px" width="1600" height="1033" loading="lazy" alt="The panel mounted on the absorber wall of an anechoic chamber, with a transmit and a receive horn antenna in the foreground">
+        <figcaption>The panel under test in an anechoic chamber, with transmit and receive horn antennas. The absorber walls suppress room reflections, so what the receiver picks up comes from the panel.</figcaption>
+      </figure>
+      <figure class="product-figure">
+        <a href="images/products/control-software.png" target="_blank" rel="noopener">
+          <img src="images/products/control-software.png" width="1787" height="1161" loading="lazy" alt="Screenshot of the RIS matrix control software: a 20 by 20 grid of 2-bit phase states, UART connection settings, and fields to compute the pattern from a target angle or focal point">
+        </a>
+        <figcaption>Control software. Enter a target direction (far-field beam) or a focal point (near-field focus), and it computes the 20 × 20 pattern of 2-bit phase states (0–3 per element). It then sends the pattern to the panel's controller over UART. Elements can also be set by hand. <a href="images/products/control-software.png" target="_blank" rel="noopener">View full size</a></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="demo">
+  <div class="container">
+    <span class="eyebrow">See it in action</span>
+    <h2 class="section-title">The prototype, running in real time</h2>
+    <div class="figure-grid">
+      <figure class="product-figure">
+        <div class="video-frame">
+          <iframe src="https://www.youtube-nocookie.com/embed/E8e1TrlYKLQ" title="An Experimental Study with Prototyping" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <figcaption>An experimental study with the prototype (about 1 minute). The NTU lab's RIS prototype running in real time.</figcaption>
+      </figure>
+      <figure class="product-figure" id="basement-trial">
+        <div class="video-frame">
+          <iframe src="https://www.youtube-nocookie.com/embed/96lpqJJnoX4" title="Trial test at the basement" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <figcaption>Trial test in an underground carpark (30 seconds). The prototype running live underground, where base station signal struggles to reach. In this trial, uplink speed increased by 100%.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <footer class="site-footer">
   <div class="container">
     <div>
-      <p class="footer-brand">CityWave</p>
+      <img class="footer-brand" src="images/logo/citywave-logo-blue-white.svg" alt="CityWave" width="100" height="77">
       <p class="footer-meta">Singapore · NTU Collaboration</p>
       <p class="footer-meta">© 2026 CityWave. All rights reserved.</p>
     </div>

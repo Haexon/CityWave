@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="79 9 96 96" role="img" aria-labelledby="title">
+  <title id="title">CityWave</title>
+  <defs>
+    <linearGradient id="cw-blue" gradientUnits="userSpaceOnUse" x1="165" y1="20" x2="95" y2="100">
+      <stop offset="0.15" stop-color="#06AFCE"/>
+      <stop offset="0.25" stop-color="#0194C8"/>
+      <stop offset="0.72" stop-color="#036AAA"/>
+      <stop offset="0.9" stop-color="#034A86"/>
+    </linearGradient>
+  </defs>
+  <g fill="url(#cw-blue)">
+    <path d="M162.46 29.29A45 45 0 1 0 127.79 101.99L134.5 80.85A25 25 0 1 1 146.7 41.61Z"/>
+    <path d="M108 57H118.5L131.5 85H117.5Z"/>
+    <path d="M125 46L135 51L147.5 82L156 59H172.5L159 102H141.5L134.8 80.5L130 83H126L126.5 74Z"/>
+  </g>
+</svg>
